@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.DS_Store
+*.log
+.env*
+
+# original site source (reference only, never published)
+reference/
+
+# original site source is never published (reference/ above)

@@ -45,9 +45,15 @@
   transform: translateY(-112%);
   border-radius: 0 0 50% 50% / 0 0 30vh 30vh;
 }
-.preloader.is-leaving .preloader-word,
+/* The word's entrance animation uses fill-mode "forwards", which pins opacity at 1 and beats
+   plain rules — so the exit needs its own animation. Text and drops vanish the moment the
+   curtain starts to lift. */
+.preloader.is-leaving .preloader-word {
+  animation: preloader-word-out 0.3s ease-in forwards;
+}
 .preloader.is-leaving .preloader-drops {
   opacity: 0;
+  transition: opacity 0.25s ease-in;
 }
 
 @keyframes preloader-word {
@@ -58,6 +64,16 @@
   to {
     opacity: 1;
     transform: none;
+  }
+}
+@keyframes preloader-word-out {
+  from {
+    opacity: 1;
+    transform: none;
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-18%) scale(0.98);
   }
 }
 @keyframes preloader-object-fall {

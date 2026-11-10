@@ -1,0 +1,12 @@
+:root {
+  --ink: #0e0c0d;
+  --paper: #dadada;
+  --white: #fbfbfb;
+  --acid: #d5ff69;
+  --night: #08080a;
+
+  /* Design unit: 1/1440 of width or 1/760 of height, whichever is smaller.
+     Every size is calc(N * var(--u)) so the whole scene scales like an image. */
+  --u: min(0.0694444444vw, 0.1315789474vh);
+  --u: min(0.0694444444vw, 0.1315789474dvh);
+}

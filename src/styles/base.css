@@ -1,0 +1,33 @@
+@import '@fontsource/inter-tight/400.css';
+@import '@fontsource/inter-tight/700.css';
+@import '@fontsource/inter-tight/800.css';
+@import '@fontsource/inter-tight/900.css';
+
+* { box-sizing: border-box; }
+
+html {
+  margin: 0;
+  min-height: 100%;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Inter Tight', Arial, Helvetica, sans-serif;
+  font-weight: 800;
+  width: 100%;
+  overflow-anchor: none;
+}
+
+body {
+  margin: 0;
+  min-height: 100%;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: inherit;
+  font-weight: 800;
+  width: 100%;
+  touch-action: pan-y;
+}
+
+body.is-booting { overflow: hidden; background: var(--night); }
+
+a, button { color: inherit; font: inherit; }
+img { display: block; max-width: 100%; }

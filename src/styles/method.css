@@ -38,7 +38,7 @@
   column-gap: calc(10 * var(--u));
   padding: calc(30 * var(--u)) 0;
   border-top: 1px solid rgba(251, 251, 251, 0.2);
-  opacity: 0.45;
+  opacity: 0.72;
   cursor: default;
   transition: opacity 0.4s;
 }

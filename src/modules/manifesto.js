@@ -8,8 +8,12 @@ import { clamp } from '../core/math.js'
 export function initManifesto() {
   const p = document.querySelector('#manifestoCopy')
   const text = p.textContent.trim()
-  p.setAttribute('aria-label', text)
   p.textContent = ''
+  // real text for assistive tech; the per-character spans are decorative
+  const sr = document.createElement('span')
+  sr.textContent = text
+  sr.style.cssText = 'position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap'
+  p.appendChild(sr)
   const chars = [...text].map((c) => {
     const s = document.createElement('span')
     s.className = 'ch'

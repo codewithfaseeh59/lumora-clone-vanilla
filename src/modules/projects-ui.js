@@ -5,8 +5,8 @@ import { initReveal, initCounters } from './reveal.js'
 const card = (p, i) => `
   <a class="proj-card" href="${p.href}" data-type="${p.type}" data-reveal style="--c:${p.color};--on:${p.on};--d:${i * 70}ms">
     <span class="proj-tag">${p.category} · ${p.year}</span>
-    <img src="${heroArt(p.id)}" alt="" loading="lazy" />
-    <span class="proj-meta"><h3>${p.name}</h3><p>${p.label}</p></span>
+    <img src="${heroArt(p.id)}" alt="" width="400" height="400" loading="lazy" />
+    <span class="proj-meta"><h3 aria-level="2">${p.name}</h3><p>${p.label}</p></span>
     <span class="proj-arrow" aria-hidden="true">↗</span>
   </a>`
 
@@ -50,7 +50,7 @@ export function initWorkPage() {
       <p class="eyebrow">${p.category} · ${p.year}</p>
       <h1 class="p-title"><span class="line"><span>${p.name}</span></span></h1>
       <p class="p-lead">${p.label}</p>
-      <img class="w-hero-art" src="${art}" alt="" />
+      <img class="w-hero-art" src="${art}" alt="" width="400" height="400" />
       <dl class="w-meta">
         <div><dt>Client</dt><dd>${p.name}</dd></div>
         <div><dt>Year</dt><dd>${p.year}</dd></div>
@@ -63,9 +63,9 @@ export function initWorkPage() {
     </section>
 
     <section class="w-panels" aria-hidden="true">
-      <div class="w-panel" data-reveal style="--c:${p.color};--on:${p.on}"><img src="${art}" alt="" /></div>
-      <div class="w-panel w-panel-ink" data-reveal style="--d:120ms"><img src="${art}" alt="" /></div>
-      <div class="w-panel w-panel-wide" data-reveal style="--c:${p.color};--d:200ms"><img src="${art}" alt="" /><img src="${art}" alt="" /><img src="${art}" alt="" /></div>
+      <div class="w-panel" data-reveal style="--c:${p.color};--on:${p.on}"><img src="${art}" alt="" width="400" height="400" /></div>
+      <div class="w-panel w-panel-ink" data-reveal style="--d:120ms"><img src="${art}" alt="" width="400" height="400" /></div>
+      <div class="w-panel w-panel-wide" data-reveal style="--c:${p.color};--d:200ms"><img src="${art}" alt="" width="400" height="400" /><img src="${art}" alt="" width="400" height="400" /><img src="${art}" alt="" width="400" height="400" /></div>
     </section>
 
     <section class="p-section w-two">
@@ -89,7 +89,7 @@ export function initWorkPage() {
     <a class="w-next" href="${next.href}" style="--c:${next.color};--on:${next.on}">
       <span class="eyebrow">next project</span>
       <span class="w-next-name">${next.name} <i aria-hidden="true">→</i></span>
-      <img src="${heroArt(next.id)}" alt="" />
+      <img src="${heroArt(next.id)}" alt="" width="400" height="400" />
     </a>`
 
   initReveal(root)

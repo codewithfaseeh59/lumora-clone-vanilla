@@ -1,0 +1,11 @@
+# lumora
+
+> lumora is a fictional concept-led brand and web design studio. It is an educational front-end project, not a real agency.
+
+## Pages
+- [Home](/): intro, services, method
+- [Web & Digital](/digital/): websites and digital products
+- [Branding & Design](/branding/): identities and visual systems
+- [Projects](/projects/): fictional case studies
+- [About](/about/): the team
+- [Book a call](/book/): demo booking form

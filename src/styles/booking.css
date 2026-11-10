@@ -95,7 +95,7 @@
   background: var(--paper);
   font-size: calc(16 * var(--u));
   text-transform: uppercase;
-  opacity: 0.55;
+  opacity: 0.75;
   transition: opacity 0.3s, background 0.3s;
 }
 .book-steps li b {
@@ -164,7 +164,7 @@
   text-align: center;
   font-size: calc(13 * var(--u));
   text-transform: uppercase;
-  opacity: 0.5;
+  opacity: 0.75;
   padding-bottom: calc(6 * var(--u));
 }
 .day {
@@ -230,7 +230,7 @@
 .slots-tz {
   margin-top: calc(16 * var(--u));
   font-size: calc(13 * var(--u));
-  opacity: 0.55;
+  opacity: 0.75;
 }
 
 .book-actions {

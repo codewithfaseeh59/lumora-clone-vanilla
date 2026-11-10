@@ -423,7 +423,7 @@ body.page {
 .w-meta dt {
   font-size: calc(14 * var(--u));
   text-transform: uppercase;
-  opacity: 0.6;
+  opacity: 0.8;
   margin-bottom: calc(6 * var(--u));
 }
 .w-meta dd {
@@ -631,6 +631,7 @@ body.page {
   max-width: calc(380 * var(--u));
   font-weight: 700;
 }
+.foot-word::after { content: attr(data-text); }
 .foot-word {
   margin-top: calc(60 * var(--u));
   font-size: calc(420 * var(--u));

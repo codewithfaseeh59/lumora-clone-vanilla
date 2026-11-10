@@ -15,6 +15,10 @@ import { initAbout } from './modules/about.js'
 import { initLoop } from './modules/loop.js'
 import { initPreloader } from './modules/preloader.js'
 
+// The real stylesheet is in place by now (imported above), so the stop-gap critical CSS
+// from index.html must go — otherwise it would keep the preloader's contents hidden.
+document.getElementById('critical-css')?.remove()
+
 document.title = site.title
 history.scrollRestoration = 'manual'
 

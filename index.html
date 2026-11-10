@@ -9,7 +9,7 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <!-- Critical CSS: runs before the stylesheet arrives (in dev Vite injects CSS from JS), so the
          page never flashes as raw unstyled HTML. The real preloader styles take over after. -->
-    <style>
+    <style id="critical-css">
       html { background: #08080a; }
       body.is-booting { margin: 0; background: #08080a; overflow: hidden; }
       body.is-booting > *:not(.preloader) { visibility: hidden; }

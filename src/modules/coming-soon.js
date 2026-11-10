@@ -31,19 +31,16 @@ export function initComingSoon() {
     if (e.key === 'Escape' && modal.classList.contains('is-open')) closeComingSoon()
   })
 
-  // Capture phase so we beat default navigation: site-relative paths and
-  // explicit data-coming-soon links show the modal; #anchors and mailto: pass through.
+  // Capture phase so we run before navigation. Only links that are explicitly marked
+  // data-coming-soon (booking, socials…) open the modal; real pages navigate normally.
   document.addEventListener(
     'click',
     (e) => {
-      const a = e.target.closest('a')
+      const a = e.target.closest('a[data-coming-soon]')
       if (!a) return
-      const href = a.getAttribute('href') || ''
-      if (a.hasAttribute('data-coming-soon') || (href.startsWith('/') && !href.startsWith('//'))) {
-        e.preventDefault()
-        e.stopPropagation()
-        openComingSoon()
-      }
+      e.preventDefault()
+      e.stopImmediatePropagation()
+      openComingSoon()
     },
     true
   )

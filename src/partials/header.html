@@ -1,0 +1,41 @@
+    <div class="page-curtain" aria-hidden="true"></div>
+
+    <!-- Topbar -->
+    <header class="topbar" id="topbar">
+      <a class="logo" href="/" aria-label="lumora — home">
+        <svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="17" fill="none" stroke="currentColor" stroke-width="4" stroke-dasharray="6 4" /><circle cx="20" cy="20" r="7" fill="currentColor" /></svg>
+        <span>lumora</span>
+      </a>
+      <button class="pill menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="menu">
+        <span class="menu-btn-label" data-label>Menu</span>
+        <span class="dots" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      </button>
+      <div class="actions">
+        <button class="pill lang-pill" type="button" data-lang aria-label="Switch language">Esp</button>
+        <a class="pill pill-acid" href="mailto:hello@lumora.example">Share a brief</a>
+      </div>
+    </header>
+
+    <!-- Menu overlay -->
+    <div class="menu" id="menu" aria-hidden="true" role="dialog" aria-label="Menu">
+      <nav class="menu-nav" aria-label="Primary">
+        <a href="/digital/" class="menu-link"><span>Web&amp;Digital</span></a>
+        <a href="/branding/" class="menu-link"><span>Branding&amp; Design</span></a>
+        <a href="/about/" class="menu-link"><span>Who we are</span></a>
+        <a href="/projects/" class="menu-link"><span>Projects</span></a>
+        <a href="#book" data-coming-soon class="menu-link"><span>Book a call</span></a>
+      </nav>
+      <div class="menu-foot">
+        <div class="menu-lang" role="group" aria-label="Language">
+          <button type="button" data-lang-set="en" class="is-on">Eng</button>
+          <button type="button" data-lang-set="es">Esp</button>
+        </div>
+        <a class="menu-mail" href="mailto:hello@lumora.example">hello@lumora.example</a>
+        <div class="menu-social">
+          <a href="#calendly" data-coming-soon>Calendly</a>
+          <a href="#dribbble" data-coming-soon>Dribbble</a>
+          <a href="#privacy" data-coming-soon>privacy</a>
+        </div>
+      </div>
+    </div>
+

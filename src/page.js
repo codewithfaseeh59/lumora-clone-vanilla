@@ -9,6 +9,9 @@ import { initReveal, initCounters } from './modules/reveal.js'
 import { initProjectsPage, initRelated, initWorkPage } from './modules/projects-ui.js'
 import { heroArt } from './data/assets.js'
 
+// The real stylesheet is applied by now (imported above): drop the stop-gap critical CSS.
+document.getElementById('critical-css')?.remove()
+
 // Entry for every inner page (about, digital, branding, projects, work/*).
 // The home page has its own entry (main.js).
 initState()

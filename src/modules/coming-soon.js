@@ -1,3 +1,5 @@
+import { lenis } from '../core/lenis.js'
+
 // "This page is on its way" modal. Any link to a page that doesn't exist opens it.
 const modal = document.querySelector('#comingSoon')
 const card = modal.querySelector('.coming-soon-card')
@@ -9,6 +11,7 @@ export function openComingSoon() {
   modal.classList.add('is-open')
   modal.setAttribute('aria-hidden', 'false')
   document.body.classList.add('cs-open')
+  lenis.stop()
   card.focus({ preventScroll: true })
 }
 
@@ -16,6 +19,7 @@ export function closeComingSoon() {
   modal.classList.remove('is-open')
   modal.setAttribute('aria-hidden', 'true')
   document.body.classList.remove('cs-open')
+  lenis.start()
   lastFocus?.focus?.({ preventScroll: true })
 }
 

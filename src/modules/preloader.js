@@ -1,6 +1,7 @@
 import { heroObjects } from '../data/hero-objects.js'
 import { startIntro } from './hero.js'
 import { state } from '../core/state.js'
+import { lenis } from '../core/lenis.js'
 
 // Dark intro: coloured drops fall and bounce, the wordmark rises, then a curtain with
 // an arched edge lifts off to reveal the page and the collage animates in.
@@ -16,6 +17,7 @@ export function initPreloader() {
   }
 
   if (state.reduced) return finish()
+  lenis.stop() // no scrolling until the curtain lifts
 
   heroObjects.forEach((o, i) => {
     const d = document.createElement('i')
@@ -33,6 +35,7 @@ export function initPreloader() {
     // reveal the page slightly after the curtain starts moving
     setTimeout(() => {
       body.classList.remove('is-booting')
+      lenis.start()
       startIntro()
     }, 350)
     setTimeout(() => el.remove(), 1200)

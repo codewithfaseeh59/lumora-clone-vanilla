@@ -2,6 +2,7 @@ import './styles/index.css'
 import { site } from './data/site.js'
 import { initState } from './core/state.js'
 import { startTicker } from './core/ticker.js'
+import { initLenis } from './core/lenis.js'
 import { initHero } from './modules/hero.js'
 import { initHover } from './modules/hover.js'
 import { initTopbar } from './modules/topbar.js'
@@ -19,6 +20,7 @@ history.scrollRestoration = 'manual'
 
 // order matters: state first (geometry), DOM builders before hover, ticker last
 initState()
+initLenis() // first in the ticker, so scroll is updated before everything reads it
 initHero()
 initHover(openComingSoon)
 initTopbar()

@@ -1,4 +1,5 @@
 import { state } from '../core/state.js'
+import { lenis } from '../core/lenis.js'
 
 // Full-screen menu. A circle clip-path grows out of the Menu button (CSS does the
 // animation; we just tell it where the button is). Focus is trapped while open and
@@ -28,6 +29,7 @@ export function initMenu() {
     menu.setAttribute('aria-hidden', String(!open))
     label.textContent = open ? 'Close' : 'Menu'
     pageEls().forEach((el) => (el.inert = open))
+    open ? lenis.stop() : lenis.start()
     if (open) menu.querySelector('.menu-link')?.focus({ preventScroll: true, focusVisible: fromKeyboard })
     else btn.focus({ preventScroll: true, focusVisible: fromKeyboard })
   }
@@ -58,7 +60,7 @@ export function initMenu() {
     const name = hash.slice(1)
     const geo = state.geo[name]
     const top = name === 'top' ? 0 : geo ? geo.top : null
-    if (top !== null) window.scrollTo({ top, behavior: 'smooth' })
+    if (top !== null) lenis.scrollTo(top, { duration: 1.6 })
   }
   document.addEventListener('click', (e) => {
     const a = e.target.closest('a[href^="#"]')

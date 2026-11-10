@@ -1,4 +1,4 @@
-import { assets } from './assets.js'
+import { heroArt } from './assets.js'
 
 // Layout is on a 1440×760 artboard (x/y/w) and a 390×760 mobile artboard (mx/my/mw), in --u units.
 // depth: parallax strength · axisX/Y: drift + exit direction · spin: tilt degrees
@@ -13,4 +13,4 @@ export const heroObjects = [
   { id: 'cube', x: 940, y: 330, w: 290, mx: 20, my: 450, mw: 150, depth: 0.64, axisX: 1.1, axisY: 0.35, spin: 5, color: '#D5FF69', label: 'creator platform concept', href: '/work/cube' },
   { id: 'cup', x: 770, y: 440, w: 190, mx: 150, my: 330, mw: 110, depth: 1.18, axisX: -0.3, axisY: 1.2, spin: -9, color: '#F6E7C6', label: 'coffee chain', href: '/work/cup' },
   { id: 'wave', x: 1170, y: 170, w: 260, mx: 225, my: 460, mw: 140, depth: 0.92, axisX: 1, axisY: -0.25, spin: -8, color: '#FF6B35', label: 'surf shop promo', href: '/work/wave' },
-].map((o) => ({ ...o, src: assets.hero[o.id] }))
+].map((o) => ({ ...o, src: heroArt(o.id) }))

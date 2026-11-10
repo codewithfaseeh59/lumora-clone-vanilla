@@ -7,6 +7,15 @@
     <meta name="description" content="lumora is a concept-led design studio creating brand identities and websites. (Educational project)" />
     <meta name="robots" content="noindex" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <!-- Critical CSS: runs before the stylesheet arrives (in dev Vite injects CSS from JS), so the
+         page never flashes as raw unstyled HTML. The real preloader styles take over after. -->
+    <style>
+      html { background: #08080a; }
+      body.is-booting { margin: 0; background: #08080a; overflow: hidden; }
+      body.is-booting > *:not(.preloader) { visibility: hidden; }
+      body.is-booting > .preloader { position: fixed; inset: 0; background: #08080a; z-index: 400; }
+      body.is-booting > .preloader > * { visibility: hidden; }
+    </style>
   </head>
   <body class="is-booting">
     <!-- Preloader -->

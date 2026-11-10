@@ -1,0 +1,426 @@
+/* ---------- Book a call ---------- */
+.book-grid {
+  display: grid;
+  grid-template-columns: 1.55fr 1fr;
+  gap: calc(16 * var(--u));
+  align-items: start;
+}
+.book-card {
+  scroll-margin-top: calc(100 * var(--u)); /* keep the card clear of the fixed topbar when we scroll to it */
+}
+.book-card,
+.side-card {
+  padding: calc(32 * var(--u));
+  border-radius: calc(32 * var(--u));
+  background: var(--white);
+}
+.book-side {
+  display: grid;
+  gap: calc(16 * var(--u));
+  position: sticky;
+  top: calc(100 * var(--u));
+}
+.side-card .eyebrow {
+  margin-bottom: calc(20 * var(--u));
+}
+.side-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.side-list li {
+  padding: calc(14 * var(--u)) 0;
+  border-top: 1px solid rgba(14, 12, 13, 0.15);
+  font-size: calc(20 * var(--u));
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+.side-list b {
+  display: inline-block;
+  margin-right: calc(8 * var(--u));
+  padding: calc(3 * var(--u)) calc(10 * var(--u));
+  border-radius: 999px;
+  background: var(--acid);
+  text-transform: uppercase;
+  font-size: calc(15 * var(--u));
+}
+.side-faq details {
+  border-top: 1px solid rgba(14, 12, 13, 0.15);
+  padding: calc(14 * var(--u)) 0;
+}
+.side-faq summary {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: calc(20 * var(--u));
+  letter-spacing: -0.02em;
+}
+.side-faq summary::-webkit-details-marker {
+  display: none;
+}
+.side-faq summary::after {
+  content: '+';
+  transition: transform 0.3s var(--ease-out);
+}
+.side-faq details[open] summary::after {
+  transform: rotate(45deg);
+}
+.side-faq details p {
+  margin-top: calc(10 * var(--u));
+  font-size: calc(17 * var(--u));
+  line-height: 1.2;
+  font-weight: 700;
+  opacity: 0.75;
+}
+.side-faq a {
+  text-decoration: underline;
+}
+
+/* steps */
+.book-steps {
+  display: flex;
+  gap: calc(8 * var(--u));
+  list-style: none;
+  margin: 0 0 calc(28 * var(--u));
+  padding: 0;
+}
+.book-steps li {
+  display: flex;
+  align-items: center;
+  gap: calc(8 * var(--u));
+  padding: calc(8 * var(--u)) calc(16 * var(--u)) calc(8 * var(--u)) calc(8 * var(--u));
+  border-radius: 999px;
+  background: var(--paper);
+  font-size: calc(16 * var(--u));
+  text-transform: uppercase;
+  opacity: 0.55;
+  transition: opacity 0.3s, background 0.3s;
+}
+.book-steps li b {
+  display: grid;
+  place-items: center;
+  width: calc(28 * var(--u));
+  height: calc(28 * var(--u));
+  border-radius: 50%;
+  background: var(--ink);
+  color: var(--white);
+  font-size: calc(14 * var(--u));
+}
+.book-steps li.is-on {
+  opacity: 1;
+  background: var(--acid);
+}
+.book-steps li.is-done {
+  opacity: 1;
+}
+
+.book-pane[hidden] {
+  display: none;
+}
+.book-pick {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: calc(30 * var(--u));
+}
+
+/* calendar */
+.cal-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: calc(14 * var(--u));
+}
+.cal-head h2 {
+  font-size: calc(32 * var(--u));
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+}
+.cal-nav {
+  width: calc(44 * var(--u));
+  height: calc(44 * var(--u));
+  border: 0;
+  border-radius: 50%;
+  background: var(--paper);
+  font-size: calc(20 * var(--u));
+  transition: background 0.25s, transform 0.25s var(--ease-out);
+}
+.cal-nav:hover:not(:disabled) {
+  background: var(--acid);
+  transform: scale(1.08);
+}
+.cal-nav:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+.cal-week,
+.cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: calc(6 * var(--u));
+}
+.cal-week span {
+  text-align: center;
+  font-size: calc(13 * var(--u));
+  text-transform: uppercase;
+  opacity: 0.5;
+  padding-bottom: calc(6 * var(--u));
+}
+.day {
+  aspect-ratio: 1;
+  border: 0;
+  border-radius: calc(14 * var(--u));
+  background: var(--paper);
+  font-size: calc(18 * var(--u));
+  transition: background 0.2s, transform 0.2s var(--ease-out), color 0.2s;
+}
+.day:disabled {
+  background: transparent;
+  opacity: 0.25;
+  cursor: default;
+}
+.day:not(:disabled):hover {
+  background: var(--acid);
+  transform: scale(1.06);
+}
+.day.is-today {
+  outline: 2px solid var(--ink);
+  outline-offset: -2px;
+}
+.day.is-on {
+  background: var(--ink);
+  color: var(--acid);
+}
+
+/* slots */
+.slots-title {
+  font-size: calc(22 * var(--u));
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  margin-bottom: calc(14 * var(--u));
+  min-height: calc(26 * var(--u));
+}
+.slots-list {
+  display: grid;
+  gap: calc(8 * var(--u));
+}
+.slot {
+  padding: calc(14 * var(--u));
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  background: transparent;
+  font-size: calc(18 * var(--u));
+  transition: background 0.2s, color 0.2s, transform 0.2s var(--ease-out);
+}
+.slot:hover {
+  background: var(--acid);
+  transform: translateX(calc(4 * var(--u)));
+}
+.slot.is-on {
+  background: var(--ink);
+  color: var(--acid);
+}
+.slots-empty {
+  font-size: calc(17 * var(--u));
+  line-height: 1.2;
+  font-weight: 700;
+  opacity: 0.6;
+}
+.slots-tz {
+  margin-top: calc(16 * var(--u));
+  font-size: calc(13 * var(--u));
+  opacity: 0.55;
+}
+
+.book-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: calc(16 * var(--u));
+  margin-top: calc(28 * var(--u));
+  padding-top: calc(22 * var(--u));
+  border-top: 1px solid rgba(14, 12, 13, 0.15);
+}
+.book-picked {
+  font-size: calc(18 * var(--u));
+  letter-spacing: -0.02em;
+}
+.btn {
+  height: calc(54 * var(--u));
+  padding: 0 calc(28 * var(--u));
+  border: 0;
+  border-radius: 999px;
+  background: var(--acid);
+  color: var(--ink);
+  font-size: calc(18 * var(--u));
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: transform 0.25s var(--ease-out), background 0.25s;
+}
+.btn:hover:not(:disabled) {
+  transform: scale(1.05);
+}
+.btn:disabled {
+  background: var(--paper);
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.btn-ghost {
+  background: transparent;
+  box-shadow: inset 0 0 0 2px var(--ink);
+}
+
+/* form */
+.book-form:not([hidden]) {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: calc(20 * var(--u));
+}
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: calc(8 * var(--u));
+}
+.field-wide {
+  grid-column: 1 / -1;
+}
+.field label,
+.field .label {
+  font-size: calc(14 * var(--u));
+  text-transform: uppercase;
+}
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  padding: calc(14 * var(--u)) calc(18 * var(--u));
+  border: 2px solid transparent;
+  border-radius: calc(16 * var(--u));
+  background: var(--paper);
+  color: var(--ink);
+  font: inherit;
+  font-weight: 700;
+  font-size: calc(18 * var(--u));
+  transition: border-color 0.2s, background 0.2s;
+}
+.field textarea {
+  resize: vertical;
+  min-height: calc(120 * var(--u));
+}
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: var(--ink);
+  background: var(--white);
+}
+.field .is-bad {
+  border-color: #d6351f;
+}
+.err {
+  min-height: 1em;
+  font-size: calc(13 * var(--u));
+  color: #d6351f;
+}
+.book-form .chips {
+  margin-top: 0;
+}
+.book-form .chip {
+  background: var(--paper); /* the card is white, so the default white chip would vanish */
+}
+.book-form .chip.is-on {
+  background: var(--ink);
+}
+.demo-note {
+  font-size: calc(13 * var(--u));
+  opacity: 0.55;
+}
+
+/* confirmation */
+.book-done {
+  text-align: left;
+}
+.done-badge {
+  display: grid;
+  place-items: center;
+  width: calc(84 * var(--u));
+  height: calc(84 * var(--u));
+  border-radius: 50%;
+  background: var(--acid);
+  font-size: calc(44 * var(--u));
+  margin-bottom: calc(22 * var(--u));
+  animation: pop 0.7s var(--ease-out) both;
+}
+@keyframes pop {
+  from {
+    transform: scale(0.4) rotate(-20deg);
+    opacity: 0;
+  }
+}
+.book-done h2 {
+  font-size: calc(64 * var(--u));
+  line-height: 0.95;
+  letter-spacing: -0.05em;
+  text-transform: uppercase;
+}
+.done-lead {
+  margin-top: calc(12 * var(--u));
+  font-size: calc(20 * var(--u));
+  opacity: 0.7;
+}
+.done-sum {
+  margin: calc(28 * var(--u)) 0 0;
+}
+.done-sum div {
+  display: grid;
+  grid-template-columns: calc(140 * var(--u)) 1fr;
+  gap: calc(16 * var(--u));
+  padding: calc(14 * var(--u)) 0;
+  border-top: 1px solid rgba(14, 12, 13, 0.15);
+}
+.done-sum dt {
+  font-size: calc(14 * var(--u));
+  text-transform: uppercase;
+  opacity: 0.55;
+  padding-top: calc(4 * var(--u));
+}
+.done-sum dd {
+  margin: 0;
+  font-size: calc(19 * var(--u));
+  line-height: 1.15;
+  word-break: break-word;
+}
+
+@media (max-width: 900px) {
+  .book-grid { grid-template-columns: 1fr; }
+  .book-side { position: static; }
+  .book-card, .side-card { padding: calc(18 * var(--u)); border-radius: calc(22 * var(--u)); }
+  .book-steps { gap: calc(4 * var(--u)); }
+  .book-steps li { font-size: calc(11 * var(--u)); padding: calc(6 * var(--u)) calc(10 * var(--u)) calc(6 * var(--u)) calc(6 * var(--u)); gap: calc(5 * var(--u)); }
+  .book-steps li b { width: calc(20 * var(--u)); height: calc(20 * var(--u)); font-size: calc(11 * var(--u)); }
+  .book-pick { grid-template-columns: 1fr; gap: calc(22 * var(--u)); }
+  .cal-head h2 { font-size: calc(22 * var(--u)); }
+  .cal-nav { width: calc(34 * var(--u)); height: calc(34 * var(--u)); font-size: calc(15 * var(--u)); }
+  .cal-week span { font-size: calc(10 * var(--u)); }
+  .day { font-size: calc(14 * var(--u)); border-radius: calc(10 * var(--u)); }
+  .slots-title { font-size: calc(17 * var(--u)); }
+  .slots-list { grid-template-columns: 1fr 1fr 1fr; }
+  .slot { font-size: calc(14 * var(--u)); padding: calc(10 * var(--u)); }
+  .slots-empty, .slots-tz { font-size: calc(12 * var(--u)); }
+  .book-actions { flex-direction: column; align-items: stretch; }
+  .book-picked { font-size: calc(14 * var(--u)); }
+  .btn { height: calc(46 * var(--u)); font-size: calc(14 * var(--u)); }
+  .book-form:not([hidden]) { grid-template-columns: 1fr; }
+  .field label, .field .label { font-size: calc(11 * var(--u)); }
+  .field input, .field select, .field textarea { font-size: calc(15 * var(--u)); }
+  .book-done h2 { font-size: calc(34 * var(--u)); }
+  .done-badge { width: calc(60 * var(--u)); height: calc(60 * var(--u)); font-size: calc(30 * var(--u)); }
+  .done-lead { font-size: calc(15 * var(--u)); }
+  .done-sum div { grid-template-columns: calc(80 * var(--u)) 1fr; }
+  .done-sum dt { font-size: calc(11 * var(--u)); }
+  .done-sum dd { font-size: calc(15 * var(--u)); }
+  .side-list li, .side-faq summary { font-size: calc(16 * var(--u)); }
+  .side-list b { font-size: calc(12 * var(--u)); }
+  .side-faq details p { font-size: calc(14 * var(--u)); }
+}

@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Book a call — lumora</title>
+    <meta name="description" content="Book a free 30-minute intro call with lumora. (Educational project, demo booking only)" />
+    <meta name="robots" content="noindex" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <!-- @include critical -->
+  </head>
+  <body class="page" data-page-name="book">
+    <!-- @include header -->
+
+    <main class="inner" data-page>
+      <section class="p-hero p-hero-short">
+        <p class="eyebrow">book a call</p>
+        <h1 class="p-title">
+          <span class="line" style="--i: 0"><span>Let's talk</span></span>
+          <span class="line" style="--i: 1"><span>it through</span></span>
+        </h1>
+        <p class="p-lead">A free 30-minute video call. Tell us about your project and we'll tell you, honestly, how we would approach it.</p>
+      </section>
+
+      <section class="p-section p-section-tight">
+        <div class="book-grid">
+          <!-- booking widget (built by src/modules/booking.js) -->
+          <div class="book-card" id="bookCard">
+            <ol class="book-steps" id="bookSteps" aria-label="Booking steps">
+              <li class="is-on" data-step="1"><b>1</b> Pick a time</li>
+              <li data-step="2"><b>2</b> Your details</li>
+              <li data-step="3"><b>3</b> Confirmed</li>
+            </ol>
+
+            <!-- step 1 -->
+            <div class="book-pane" id="paneTime">
+              <div class="book-pick">
+                <div class="cal">
+                  <div class="cal-head">
+                    <button type="button" class="cal-nav" id="calPrev" aria-label="Previous month">←</button>
+                    <h2 id="calTitle">Month</h2>
+                    <button type="button" class="cal-nav" id="calNext" aria-label="Next month">→</button>
+                  </div>
+                  <div class="cal-week" aria-hidden="true"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span></div>
+                  <div class="cal-grid" id="calGrid"></div>
+                </div>
+                <div class="slots">
+                  <p class="slots-title" id="slotsTitle">Choose a day</p>
+                  <div class="slots-list" id="slotsList"></div>
+                  <p class="slots-tz">Times shown in Lisbon time (WET/WEST)</p>
+                </div>
+              </div>
+              <div class="book-actions">
+                <p class="book-picked" id="bookPicked" aria-live="polite">No time selected yet</p>
+                <button type="button" class="btn" id="toDetails" disabled>Continue →</button>
+              </div>
+            </div>
+
+            <!-- step 2 -->
+            <form class="book-pane book-form" id="paneDetails" hidden novalidate>
+              <div class="field"><label for="fName">Your name</label><input id="fName" name="name" autocomplete="name" placeholder="Ana Silva" required /><small class="err" data-err="name"></small></div>
+              <div class="field"><label for="fEmail">Email</label><input id="fEmail" name="email" type="email" autocomplete="email" placeholder="ana@company.com" required /><small class="err" data-err="email"></small></div>
+              <div class="field field-wide"><span class="label">What do you need?</span>
+                <div class="chips" id="fType" role="group" aria-label="Project type">
+                  <button type="button" class="chip is-on" data-v="New brand">New brand</button>
+                  <button type="button" class="chip" data-v="Rebranding">Rebranding</button>
+                  <button type="button" class="chip" data-v="Website">Website</button>
+                  <button type="button" class="chip" data-v="Brand + website">Brand + website</button>
+                  <button type="button" class="chip" data-v="Design support">Design support</button>
+                </div>
+              </div>
+              <div class="field"><label for="fBudget">Budget range</label>
+                <select id="fBudget" name="budget"><option>Under €5k</option><option selected>€5k – €10k</option><option>€10k – €25k</option><option>€25k+</option><option>Not sure yet</option></select>
+              </div>
+              <div class="field"><label for="fCompany">Company (optional)</label><input id="fCompany" name="company" autocomplete="organization" placeholder="Studio Aurora" /></div>
+              <div class="field field-wide"><label for="fMsg">Tell us a bit about the project</label><textarea id="fMsg" name="message" rows="4" placeholder="What are you building, and what should people feel when they see it?"></textarea></div>
+              <div class="book-actions field-wide">
+                <button type="button" class="btn btn-ghost" id="backToTime">← Back</button>
+                <button type="submit" class="btn">Confirm booking</button>
+              </div>
+              <p class="demo-note field-wide">Demo only: nothing you type here is sent or stored anywhere.</p>
+            </form>
+
+            <!-- step 3 -->
+            <div class="book-pane book-done" id="paneDone" hidden aria-live="polite">
+              <div class="done-badge" aria-hidden="true">✓</div>
+              <h2>You're booked, <span id="doneName">friend</span>!</h2>
+              <p class="done-lead">A calendar invite is on its way (not really, this is a demo).</p>
+              <dl class="done-sum">
+                <div><dt>When</dt><dd id="doneWhen"></dd></div>
+                <div><dt>Where</dt><dd id="doneWhere"></dd></div>
+                <div><dt>Topic</dt><dd id="doneTopic"></dd></div>
+                <div><dt>Reference</dt><dd id="doneRef"></dd></div>
+              </dl>
+              <div class="book-actions">
+                <button type="button" class="btn btn-ghost" id="bookAgain">Book another</button>
+                <button type="button" class="btn" id="addIcs">Add to calendar (.ics)</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- side info -->
+          <aside class="book-side">
+            <div class="side-card">
+              <p class="eyebrow">what to expect</p>
+              <ul class="side-list">
+                <li><b>30 min</b> video call, no pressure</li>
+                <li><b>Free</b> whether we work together or not</li>
+                <li><b>2 directors</b> on the call: Clara &amp; Inês</li>
+                <li><b>Next steps</b> in writing within 48 hours</li>
+              </ul>
+            </div>
+            <div class="side-card side-faq">
+              <p class="eyebrow">quick answers</p>
+              <details><summary>Do I need a brief ready?</summary><p>No. A couple of sentences is enough. We'll shape the rest together on the call.</p></details>
+              <details><summary>What does a project cost?</summary><p>Most identities start around €6k and most websites around €9k. We'll give you a fixed quote after the call.</p></details>
+              <details><summary>Can I reschedule?</summary><p>Of course. Reply to the confirmation email up to 12 hours before the call.</p></details>
+              <details><summary>Prefer email?</summary><p>Write to <a href="mailto:hello@lumora.example">hello@lumora.example</a> and we'll answer within a day.</p></details>
+            </div>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <!-- @include footer -->
+    <!-- @include modal -->
+    <script type="module" src="/src/page.js"></script>
+  </body>
+</html>

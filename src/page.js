@@ -7,6 +7,7 @@ import { initComingSoon } from './modules/coming-soon.js'
 import { initNav } from './modules/nav.js'
 import { initReveal, initCounters } from './modules/reveal.js'
 import { initProjectsPage, initRelated, initWorkPage } from './modules/projects-ui.js'
+import { initBooking } from './modules/booking.js'
 import { heroArt } from './data/assets.js'
 
 // The real stylesheet is applied by now (imported above): drop the stop-gap critical CSS.
@@ -24,6 +25,7 @@ initNav()
 const page = document.body.dataset.pageName
 if (page === 'projects') initProjectsPage()
 if (page === 'work') initWorkPage()
+if (page === 'book') initBooking()
 initRelated()
 
 // artwork placeholders → real/custom art:  <img data-art="cloud">

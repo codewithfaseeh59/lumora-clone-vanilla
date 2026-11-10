@@ -1,6 +1,6 @@
 :root {
   --ink: #0e0c0d;
-  --paper: #dadada;
+  --paper: #e4dcc8;
   --white: #fbfbfb;
   --acid: #d5ff69;
   --night: #08080a;
@@ -9,4 +9,14 @@
      Every size is calc(N * var(--u)) so the whole scene scales like an image. */
   --u: min(0.0694444444vw, 0.1315789474vh);
   --u: min(0.0694444444vw, 0.1315789474dvh);
+
+  --ease-out: cubic-bezier(0.22, 0.78, 0.18, 1);
+  --ease-io: cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+@media (max-width: 900px) {
+  :root {
+    /* mobile artboard is 390 wide */
+    --u: 0.2564102564vw;
+  }
 }

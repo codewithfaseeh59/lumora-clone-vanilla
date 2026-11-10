@@ -3,7 +3,9 @@
 @import '@fontsource/inter-tight/800.css';
 @import '@fontsource/inter-tight/900.css';
 
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
 
 html {
   margin: 0;
@@ -13,7 +15,8 @@ html {
   font-family: 'Inter Tight', Arial, Helvetica, sans-serif;
   font-weight: 800;
   width: 100%;
-  overflow-anchor: none;
+  overflow-anchor: none; /* the loop wrap jumps scroll; anchoring would fight it */
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -25,9 +28,46 @@ body {
   font-weight: 800;
   width: 100%;
   touch-action: pan-y;
+  -webkit-font-smoothing: antialiased;
 }
 
-body.is-booting { overflow: hidden; background: var(--night); }
+body.is-booting {
+  overflow: hidden;
+  background: var(--night);
+}
 
-a, button { color: inherit; font: inherit; }
-img { display: block; max-width: 100%; }
+body.is-booting [data-page],
+body.is-booting .topbar {
+  opacity: 0;
+}
+
+body.menu-open,
+body.cs-open {
+  overflow: hidden;
+}
+
+a,
+button {
+  color: inherit;
+  font: inherit;
+}
+button {
+  cursor: pointer;
+}
+img {
+  display: block;
+  max-width: 100%;
+  -webkit-user-drag: none;
+  user-select: none;
+}
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+}

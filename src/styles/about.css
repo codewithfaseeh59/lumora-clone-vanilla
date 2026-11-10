@@ -1,0 +1,99 @@
+/* The about block curves up over the dark method section (the "curtain") */
+.about {
+  position: relative;
+  z-index: 21;
+  min-height: 110vh;
+  margin-top: calc(-120 * var(--u));
+  background: var(--paper);
+  color: var(--ink);
+  border-radius: calc(120 * var(--u)) calc(120 * var(--u)) 0 0;
+  overflow: hidden;
+  isolation: isolate;
+}
+.about-inner {
+  position: relative;
+  z-index: 1;
+  padding: calc(220 * var(--u)) calc(28 * var(--u)) calc(160 * var(--u));
+  max-width: calc(1100 * var(--u));
+  margin-left: calc(80 * var(--u));
+}
+.about-kicker {
+  font-size: calc(18 * var(--u));
+  text-transform: uppercase;
+  margin-bottom: calc(24 * var(--u));
+}
+.about-title {
+  font-size: calc(92 * var(--u));
+  line-height: 0.96;
+  letter-spacing: -0.055em;
+  text-transform: uppercase;
+  margin-bottom: calc(44 * var(--u));
+}
+.about-copy {
+  max-width: calc(720 * var(--u));
+  font-size: calc(26 * var(--u));
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  font-weight: 700;
+}
+.about-more {
+  display: inline-block;
+  margin-top: calc(40 * var(--u));
+  padding: calc(14 * var(--u)) calc(26 * var(--u));
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--white);
+  font-size: calc(18 * var(--u));
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: transform 0.25s var(--ease-out);
+}
+.about-more:hover {
+  transform: scale(1.05);
+}
+
+/* two overlapping circles stand in for the founders' portrait */
+.about-portrait {
+  position: absolute;
+  right: calc(-330 * var(--u));
+  top: calc(280 * var(--u));
+  width: calc(330 * var(--u));
+  height: calc(330 * var(--u));
+}
+.about-portrait i {
+  position: absolute;
+  border-radius: 50%;
+  box-shadow: inset calc(-14 * var(--u)) calc(-18 * var(--u)) calc(30 * var(--u)) rgba(0, 0, 0, 0.18);
+}
+.about-portrait i:nth-child(1) {
+  inset: 0 28% 20% 0;
+  background: radial-gradient(circle at 30% 25%, #fff, #ff8db6 45%, #c2456e);
+}
+.about-portrait i:nth-child(2) {
+  inset: 22% 0 0 34%;
+  background: radial-gradient(circle at 30% 25%, #fff, #b8d95a 45%, #6e8a1e);
+}
+
+.about-floats {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+.about-float {
+  position: absolute;
+  width: calc(240 * var(--u));
+  pointer-events: auto;
+  cursor: pointer;
+  will-change: transform;
+}
+.about-float img {
+  transition: transform 0.6s var(--ease-out);
+}
+.about-float:hover img {
+  transform: scale(1.1) rotate(4deg);
+}
+.f1 { right: calc(120 * var(--u)); top: calc(140 * var(--u)); }
+.f2 { right: calc(420 * var(--u)); top: calc(420 * var(--u)); width: calc(210 * var(--u)); }
+.f3 { right: calc(60 * var(--u)); top: calc(640 * var(--u)); width: calc(280 * var(--u)); }
+.f4 { right: calc(560 * var(--u)); top: calc(110 * var(--u)); width: calc(170 * var(--u)); }

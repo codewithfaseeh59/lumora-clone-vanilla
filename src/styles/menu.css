@@ -1,0 +1,94 @@
+.menu {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: calc(130 * var(--u)) calc(16 * var(--u)) calc(28 * var(--u));
+  background: var(--acid);
+  color: var(--ink);
+  visibility: hidden;
+  clip-path: circle(0 at var(--mx, 50vw) var(--my, 40px));
+  transition: clip-path 0.8s var(--ease-io), visibility 0s 0.8s;
+}
+.menu-open .menu {
+  visibility: visible;
+  clip-path: circle(150vmax at var(--mx, 50vw) var(--my, 40px));
+  transition: clip-path 0.9s var(--ease-io), visibility 0s;
+}
+
+.menu-nav {
+  display: flex;
+  flex-direction: column;
+  gap: calc(4 * var(--u));
+}
+.menu-link {
+  display: block;
+  overflow: hidden;
+  text-decoration: none;
+  font-size: calc(104 * var(--u));
+  line-height: 0.98;
+  letter-spacing: -0.05em;
+  text-transform: uppercase;
+}
+.menu-link span {
+  display: inline-block;
+  transform: translateY(110%);
+  transition: transform 0.5s var(--ease-out), color 0.2s;
+}
+.menu-open .menu-link span {
+  transform: none;
+  transition: transform 0.9s var(--ease-out) calc(0.25s + var(--i, 0) * 0.07s), color 0.2s;
+}
+.menu-link:hover span {
+  color: #fff;
+  -webkit-text-stroke: 0;
+}
+.menu-nav:hover .menu-link:not(:hover) span {
+  opacity: 0.35;
+}
+
+.menu-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: calc(20 * var(--u));
+  font-size: calc(20 * var(--u));
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.3s, transform 0.3s;
+}
+.menu-open .menu-foot {
+  opacity: 1;
+  transform: none;
+  transition: opacity 0.6s 0.6s, transform 0.6s var(--ease-out) 0.6s;
+}
+.menu-foot a {
+  text-decoration: none;
+}
+.menu-foot a:hover {
+  text-decoration: underline;
+}
+.menu-social {
+  display: flex;
+  gap: calc(18 * var(--u));
+  text-transform: lowercase;
+}
+.menu-lang {
+  display: flex;
+  gap: calc(4 * var(--u));
+}
+.menu-lang button {
+  height: calc(40 * var(--u));
+  padding: 0 calc(16 * var(--u));
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  text-transform: uppercase;
+  font-size: calc(18 * var(--u));
+}
+.menu-lang button.is-on {
+  background: var(--ink);
+  color: var(--acid);
+}

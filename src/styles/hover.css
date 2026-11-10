@@ -1,0 +1,64 @@
+/* Full-screen colour wipe: a circle grows from the hovered object's centre */
+.color-wipe {
+  position: fixed;
+  inset: 0;
+  z-index: 5;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  background: var(--wipe-color);
+  clip-path: circle(0 at var(--wipe-x) var(--wipe-y));
+  transition: clip-path 920ms var(--ease-out), opacity 300ms ease;
+  will-change: clip-path;
+  pointer-events: none;
+}
+.color-wipe.is-active {
+  clip-path: circle(150vmax at var(--wipe-x) var(--wipe-y));
+}
+.color-wipe.is-exiting {
+  opacity: 0;
+  transition: opacity 300ms ease;
+}
+/* wipes that live inside a section (about) paint behind its content */
+.color-wipe.in-host {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Round badge that follows the cursor */
+.hover-badge {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 90;
+  display: grid;
+  place-items: center;
+  width: calc(112 * var(--u));
+  height: calc(112 * var(--u));
+  min-width: 84px;
+  min-height: 84px;
+  padding: 10px;
+  border-radius: 50%;
+  background: var(--white);
+  color: var(--ink);
+  font-size: calc(14 * var(--u));
+  min-font-size: 11px;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  text-align: center;
+  text-transform: uppercase;
+  pointer-events: none;
+  opacity: 0;
+  will-change: transform, opacity;
+}
+body.menu-open .hover-badge {
+  display: none;
+}
+@media (hover: none) {
+  .hover-badge {
+    display: none;
+  }
+}

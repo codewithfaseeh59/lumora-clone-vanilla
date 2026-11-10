@@ -1,0 +1,104 @@
+.topbar {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 250;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: calc(20 * var(--u)) calc(16 * var(--u));
+  pointer-events: none;
+  transition: opacity 0.4s;
+}
+.topbar > * {
+  pointer-events: auto;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: calc(8 * var(--u));
+  text-decoration: none;
+  font-size: calc(46 * var(--u));
+  line-height: 1;
+  letter-spacing: -0.045em;
+  font-weight: 800;
+  text-transform: lowercase;
+  transition: color 0.3s;
+}
+.logo svg {
+  width: calc(40 * var(--u));
+  height: calc(40 * var(--u));
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: calc(10 * var(--u));
+  height: calc(48 * var(--u));
+  padding: 0 calc(20 * var(--u));
+  border: 0;
+  border-radius: 999px;
+  background: var(--white);
+  color: var(--ink);
+  font-size: calc(20 * var(--u));
+  font-weight: 800;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  transition: transform 0.25s var(--ease-out), background 0.25s;
+}
+.pill:hover {
+  transform: scale(1.05);
+}
+.pill-acid {
+  background: var(--acid);
+}
+
+.menu-btn {
+  position: absolute;
+  left: 50%;
+  margin-left: calc(-56 * var(--u));
+  min-width: calc(112 * var(--u));
+  justify-content: center;
+}
+.menu-btn:hover {
+  transform: scale(1.05);
+}
+
+.dots {
+  display: grid;
+  grid-template-columns: repeat(2, calc(6 * var(--u)));
+  gap: calc(3 * var(--u));
+}
+.dots i {
+  width: calc(6 * var(--u));
+  height: calc(6 * var(--u));
+  border-radius: 50%;
+  background: currentColor;
+  transition: transform 0.4s var(--ease-out);
+}
+.menu-open .dots i:nth-child(1) {
+  transform: translate(calc(4.5 * var(--u)), calc(4.5 * var(--u)));
+}
+.menu-open .dots i:nth-child(4) {
+  transform: translate(calc(-4.5 * var(--u)), calc(-4.5 * var(--u)));
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+}
+.lang-pill {
+  margin-right: calc(-6 * var(--u));
+  position: relative;
+  z-index: 1;
+}
+
+/* logo turns white over the dark stretch of the page */
+body.topbar-dark .logo {
+  color: var(--white);
+}
+body.menu-open .logo {
+  color: var(--ink);
+}

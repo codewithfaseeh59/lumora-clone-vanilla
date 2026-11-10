@@ -1,0 +1,58 @@
+.manifesto {
+  position: relative;
+  z-index: 20;
+  height: 280vh;
+  background: var(--night);
+  color: var(--white);
+  border-radius: calc(60 * var(--u)) calc(60 * var(--u)) 0 0;
+}
+.manifesto-stage {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100dvh;
+  display: grid;
+  place-items: center;
+  padding: 0 calc(28 * var(--u));
+}
+.manifesto-panel {
+  width: min(100%, calc(1120 * var(--u)));
+}
+.manifesto-label {
+  font-size: calc(18 * var(--u));
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  color: var(--acid);
+  margin-bottom: calc(26 * var(--u));
+}
+.manifesto-kicker {
+  display: flex;
+  flex-direction: column;
+  gap: calc(10 * var(--u));
+  margin-bottom: calc(46 * var(--u));
+}
+.manifesto-kicker span {
+  font-size: calc(22 * var(--u));
+  text-transform: uppercase;
+  opacity: 0.6;
+}
+.manifesto-kicker strong {
+  font-size: calc(84 * var(--u));
+  line-height: 0.96;
+  letter-spacing: -0.05em;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+.manifesto-copy {
+  max-width: calc(980 * var(--u));
+  font-size: calc(30 * var(--u));
+  line-height: 1.18;
+  letter-spacing: -0.03em;
+  font-weight: 700;
+}
+.manifesto-copy .ch {
+  color: rgba(251, 251, 251, 0.2);
+}
+.manifesto-copy .ch.is-lit {
+  color: var(--white);
+}

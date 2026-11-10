@@ -1,2 +1,13 @@
 @import './tokens.css';
 @import './base.css';
+@import './topbar.css';
+@import './menu.css';
+@import './preloader.css';
+@import './hero.css';
+@import './hover.css';
+@import './manifesto.css';
+@import './services.css';
+@import './method.css';
+@import './about.css';
+@import './coming-soon.css';
+@import './mobile.css';
